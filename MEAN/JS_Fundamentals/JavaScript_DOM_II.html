@@ -35,6 +35,10 @@
 				let nums = ""
 				if (i == 0 && j == 0){
 					nums = "x";
+				}else if(i == 0){
+					nums = j
+				}else if(j == 0){
+					nums = i
 				}else nums = i * j;
 				// attach our table data tags around the number
 				let data = "<td>" + nums + "</td>";
