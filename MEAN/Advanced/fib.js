@@ -1,17 +1,15 @@
 function fib() {
     var i = 0;
     var i2 = 1;
+
     function nacci() {
-        if (i==0){
-            console.log("1");
-            i++;
-        }else{
-            console.log(i);
-            var temp = i;
-            i = i + i2;
-            i2 = temp;   
-        }        
-    }
+        var temp = i;
+        console.log(i2);
+        
+        i = i2;
+        i2 = i2 + temp;   
+    }        
+    
     return nacci
   }
   var fibCounter = fib();
