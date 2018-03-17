@@ -26,9 +26,7 @@
                 padding: 10px;
                 border: 2px red solid;
             }
-            
     </style>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     
     <script>
@@ -38,11 +36,11 @@
             }
         });
         
-       
         $(document).on("click", "img", function(){
-
-
             $.get("https://pokeapi.co/api/v2/pokemon/"+$(this).attr('id')+"/", function(res) {
+                    $('#Type').text("Type");
+                    $('#height_info').text("Height");
+                    $('#weight_info').text("Weight");
                     $('#info h1').text(res.name);
                     $('#info img').attr("src",res.sprites.front_shiny);
                     $('#info img').attr("alt",res.name + " image");
@@ -54,11 +52,7 @@
                     $('#weight').text(res.weight);
                     
                 }, "json");
-            
-
         });
-        
-        
     </script> 
 </head>
 <body>
@@ -71,16 +65,16 @@
             <br>
             <img src="" alt="">
             <br>
-            <h2>Types</h2>
+            <h2 id="Type"></h2>
             <br>
             <ul>
             </ul>
             <br>
-            <h2>Height</h2>
+            <h2 id="height_info"></h2>
             <br>
             <p id="height"></p>
             <br>
-            <h2>Weight</h2>
+            <h2 id="weight_info"></h2>
             <br>
             <p id='weight'></p>
             
