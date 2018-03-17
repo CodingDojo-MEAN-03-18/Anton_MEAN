@@ -27,10 +27,10 @@ var _ = {
       }
     return sum;
     },
-    find: function(arr, callback, element) {   
+    find: function(arr, callback) {   
       index = []
       for (var key in arr){
-        if(callback(arr[key], element))  
+        if(callback(arr[key]))  
             index.push(key);
       }
       return index;
@@ -57,6 +57,6 @@ var evens = _.map([1, 2, 3, 4, 5, 6], function(num, total){ return num * total; 
 console.log(evens);
 
 console.log(_.reduce([1, 2, 3, 4, 5, 6], function(num, sum){ return sum += num; }));
-console.log(_.find([1, 2, 3, 4, 5, 6], function(num, element){ return num == element; }, 1));
+console.log(_.find([1, 2, 3, 4, 5, 6], function(num, element){ return num == 5; }));
 console.log(_.filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; }));
 console.log(_.reject([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; }));

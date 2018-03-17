@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hunting Github</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <button id="btn">Send data</button>
+    <h1></h1>
+
+    <script>
+        var button = document.getElementById("btn");
+        button.addEventListener("click", print);
+        
+        function print(){
+            $.get("https://api.github.com/users/slntn", displayName)
+                        function displayName(data) { 
+                            console.log(data.name); 
+                            $('h1').text(data.name);
+                        };
+        }
+    </script>
+
+</body>
+</html>

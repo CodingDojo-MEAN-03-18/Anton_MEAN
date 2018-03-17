@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Dojo Query</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <p id="text1">The ability to click on an HTML element with a specific id.</p>
+        <p id="text2">The ability to hover on an HTML element with a specific id.</p>
+        
+
+        <script>
+            $(document).ready(function(){
+                $("#text1").click(function() { console.log("The button was clicked!") });
+                $("#text2").hover(function() { console.log("The button was hovered on!") }); 
+            })
+        </script>
+    </body>
+</html>
