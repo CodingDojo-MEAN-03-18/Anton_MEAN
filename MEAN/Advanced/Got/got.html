@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+    <title>Weather</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('img').click(function(){
+                var id = $(this).attr("id");
+                $.get(`https://anapioficeandfire.com/api/houses/${id}`, function(res){
+                    var result = `<fieldset>
+                        <legend>House Detail</legend>
+                        <h2>Name: ${res.name}</h2>
+                        <h3>Words: ${res.words}</h3>
+                        <h3>Titles:${res.titles[0]}</h3>
+                    </fieldset>`
+                $('#results').html(result);
+            }, 'json');
+            return false;
+           })
+        });
+    </script>
+</head>
+<body>
+    <div id="weather">
+        <img src="baratheon.png" id="17" width=350 height="250">
+        <img src="lannister.jpg" id="229" width=350 height="250">
+        <img src="stark.jpg" id="362" width=350  height="250">
+        <img src="targaryen.jpg" id="378" width=350  height="250">
+        <div id="results"></div>
+    </div>
+</body>
+</html>
