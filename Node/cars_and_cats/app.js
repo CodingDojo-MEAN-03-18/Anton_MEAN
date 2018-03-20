@@ -24,44 +24,14 @@ var server = http.createServer(function (request, response){
             response.write(contents);  //  send response body
             response.end(); // finished!
         });
-    }else if(request.url === '/stylesheets/style.css'){
-        fs.readFile('./stylesheets/style.css', 'utf8', function(errors, contents){
+    }else if(request.url.endsWith('.css')){
+        fs.readFile('.' + request.url, 'utf8', function(errors, contents){
          response.writeHead(200, {'Content-type': 'text/css'});
          response.write(contents);
          response.end();
         })
-    } else if(request.url === '/images/1.jpg'){
-        fs.readFile('./images/1.jpg', function(errors, contents){
-            response.writeHead(200, {'Content-type': 'image/jpg'});
-            response.write(contents);
-            response.end();
-        })
-    }else if(request.url === '/images/2.jpg'){
-        fs.readFile('./images/2.jpg', function(errors, contents){
-            response.writeHead(200, {'Content-type': 'image/jpg'});
-            response.write(contents);
-            response.end();
-        })
-    }else if(request.url === '/images/3.jpg'){
-        fs.readFile('./images/3.jpg', function(errors, contents){
-            response.writeHead(200, {'Content-type': 'image/jpg'});
-            response.write(contents);
-            response.end();
-        })
-    }else if(request.url === '/images/c1.jpg'){
-        fs.readFile('./images/c1.jpg', function(errors, contents){
-            response.writeHead(200, {'Content-type': 'image/jpg'});
-            response.write(contents);
-            response.end();
-        })
-    }else if(request.url === '/images/c2.jpg'){
-        fs.readFile('./images/c2.jpg', function(errors, contents){
-            response.writeHead(200, {'Content-type': 'image/jpg'});
-            response.write(contents);
-            response.end();
-        })
-    }else if(request.url === '/images/c3.jpg'){
-        fs.readFile('./images/c3.jpg', function(errors, contents){
+    }else if(request.url.endsWith('.jpg')){
+        fs.readFile("."+request.url, function(errors, contents){
             response.writeHead(200, {'Content-type': 'image/jpg'});
             response.write(contents);
             response.end();

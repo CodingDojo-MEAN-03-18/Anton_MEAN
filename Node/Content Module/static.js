@@ -12,13 +12,13 @@ module.exports = function (request, response){
           response.write(contents);
           response.end();
         });
-      } else if(request.url === '/stylesheet/style.css'){ //doesn't support any style
-        fs.readFile('stylesheet/style.css', 'utf8', function (errors, contents) {
+      } else if(request.url.endsWith('.css')){ //doesn't support any style
+        fs.readFile('.' + request.url, 'utf8', function (errors, contents) {
           response.write(contents);
           response.end();
         });
-      }else if(request.url === '/images/2.jpg'){//doesn't support any pic
-        fs.readFile('./images/2.jpg', function(errors, contents){
+      }else if(request.url.endsWith('.jpg')){//doesn't support any pic
+        fs.readFile("."+request.url, function(errors, contents){
             response.writeHead(200, {'Content-type': 'image/jpg'});
             response.write(contents);
             response.end();
