@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Counter</title>
+</head>
+<body>
+    <div id="main">
+        <h1>Welcome to the Great Number Game!</h1>
+        <p>I am thinking of a number between 1 and 100</p>
+        <p>Take a guess!</p>
+
+        <% if (result == 0){%>
+            <form action="/result" method="post">
+                <input type="text" name="num">
+                <br><br>
+                <button>Submit</button>
+            </form>
+        <%} else if(result == "Too low!"){%>
+            <form class="wrong" action="/result" method="post">
+                <h1>Too low!</h1>
+                <br>
+                <input type="text" name="num">
+                <br><br>
+                <button>Submit</button>
+            </form>
+        <%}else if(result == "Too high!"){%>
+            <form class="wrong" action="/result" method="post">
+                <h1>Too high!</h1>
+                <br>
+                <input type="text" name="num">
+                <br><br>
+                <button>Submit</button>
+            </form>
+        <%}else{%>
+            <form class="won" action="/reset" method="get">
+                <h3><%= result %></h3>
+                <br><br>
+                <button>Play again?</button>
+            </form>
+        <% } %>
+    </div>
+</body>
+</html>
