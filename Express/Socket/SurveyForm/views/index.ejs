@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Counter</title>
+    <script type ="text/javascript">
+        $(document). ready(function (){
+           var socket  = io.connect();
+           $('button').click(function (){
+                context = {
+            		name : $('[name="name"]').val(),
+            		location: $('[name="location"]').val(),
+            		language: $('[name="lang"]').val(),
+            		comment: $('[name="comments"]').val()
+                }
+                socket.emit('posting_form', context);
+            });
+
+            socket.on('message', function(data) {
+                $('#result').html('<p>You emitted the following information to the server: ' + JSON.stringify(data.response) + '</p>');
+                $('#r_number').html('<p>Your lucky number emitted by server is ' + JSON.stringify(data.number) + '</p>');
+            });
+       })
+   </script>
+</head>
+<body>
+    <div>
+        <div id="result"></div>
+        <div id="r_number"></div>
+    </div>
+    <div id="main">
+        <form action="">
+            <label for="name">Your Name:</label>
+            <input type="text" name="name">
+            <br>
+            <label for="location">Dojo Location:</label>
+            <select name="location">
+                <option value="Mountain View">Mountain View</option>
+                <option value="Washington DC">Washington DC</option>
+                <option value="Boston">Boston</option>
+            </select>
+            <br>
+            <label for="lang">Favorite Language:</label>
+            <select name="lang">
+                <option value="Java Script">Java Script</option>
+                <option value="Python">Python</option>
+                <option value="C#">C#</option>
+            </select>
+            <br>
+            <label for="comments">Comment(optional):</label>
+            <textarea name="comments" cols="30" rows="10"></textarea>
+            <br><br>
+            <button class="blue">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
