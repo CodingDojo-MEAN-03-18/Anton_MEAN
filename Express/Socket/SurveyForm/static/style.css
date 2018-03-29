@@ -1,11 +1,16 @@
 form {
-    width: 300px;
+    width: 100%;
     margin:2px auto;
+    padding: 10px;
     border: 2px solid;
-    padding: 3px;
 }
 
-#main{
+.main{
     width: 400px;
     margin: 10px auto;
+}
+
+.green{
+    background-color: forestgreen;
+    align-items: center;
 }

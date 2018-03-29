@@ -24,8 +24,11 @@ var io = require('socket.io').listen(server);
 io.sockets.on('connection', function (socket) {
     console.log("Client/socket is connected!");
     console.log("Client/socket id is: ", socket.id);
-    socket.on( 'posting_form', function (data){
+    socket.on( 'posting_form', function (data){     
         socket.emit( 'message', {response: data});
-        socket.emit( 'message', {number: Math.floor(Math.random() * 1000) + 1});
+    })
+
+    socket.on( 'posting_form', function (data){     
+      socket.emit( 'num', {number: Math.floor(Math.random() * 1000) + 1});
     })
 })

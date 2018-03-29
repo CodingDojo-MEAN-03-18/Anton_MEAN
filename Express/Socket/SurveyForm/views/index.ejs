@@ -7,34 +7,38 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
     <link rel="stylesheet" href="style.css">
-    <title>Counter</title>
+    <title>Survey Form Revisited</title>
     <script type ="text/javascript">
         $(document). ready(function (){
            var socket  = io.connect();
-           $('button').click(function (){
+           $('#myForm').submit(function (){
                 context = {
-            		name : $('[name="name"]').val(),
-            		location: $('[name="location"]').val(),
-            		language: $('[name="lang"]').val(),
-            		comment: $('[name="comments"]').val()
+            		name : $('input[name="name"]').val(),
+            		location: $('select[name="location"]').val(),
+            		language: $('select[name="lang"]').val(),
+            		comment: $('textarea[name="comments"]').val()
                 }
                 socket.emit('posting_form', context);
+                return false;
             });
 
             socket.on('message', function(data) {
-                $('#result').html('<p>You emitted the following information to the server: ' + JSON.stringify(data.response) + '</p>');
+                $('#result').html('<p>You emitted the following information to the server: ' + JSON.stringify(data.response) + '</p>')
+            });
+
+            socket.on('num', function(data) {
                 $('#r_number').html('<p>Your lucky number emitted by server is ' + JSON.stringify(data.number) + '</p>');
             });
        })
    </script>
 </head>
 <body>
-    <div>
+    <div class="main green">
         <div id="result"></div>
         <div id="r_number"></div>
     </div>
-    <div id="main">
-        <form action="">
+    <div class="main">
+        <form id="myForm">
             <label for="name">Your Name:</label>
             <input type="text" name="name">
             <br>
@@ -55,7 +59,7 @@
             <label for="comments">Comment(optional):</label>
             <textarea name="comments" cols="30" rows="10"></textarea>
             <br><br>
-            <button class="blue">Submit</button>
+            <button>Submit</button>
         </form>
     </div>
 </body>
