@@ -1,0 +1,20 @@
+* {
+    font-family: sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+#main, #login{
+    width: 400px;
+    margin: 10px auto;
+    align-items: center;
+    text-align: center;
+    border: 2px solid;
+    padding: 10px
+}
+
+button{
+    width: 60px;
+    box-shadow: 2px 3px #888888;
+}
+
+

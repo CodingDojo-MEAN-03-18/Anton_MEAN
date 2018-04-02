@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Group Chat</title>
+    
+    <script type ="text/javascript">
+        $(document). ready(function (){
+
+           $("#main").hide();
+           var socket  = io.connect();
+           var user_name;
+           
+           $('#Submit').click(function (){
+                user_name = $('input[name="name"]').val();
+                $("#login").hide();
+                $("#main").show();
+            });
+
+            $('#send').click(function (){  
+                var text =user_name + ": " + $('input[name="msg"]').val() + "\n";
+                $('input[name="msg"]').val('');
+                socket.emit('msg', text);
+                $('textarea').append(text);
+            });
+                
+            socket.on('bd_msg', function(text){
+                   $('textarea').append(text);
+            });
+
+        
+        });
+    </script>
+
+</head>
+<body>
+    <div id="login">
+        <h3>The page at http://localhost say: </h3>
+        <br>
+        <label for='name'>Yor Name:</label>
+        <br>
+        <input name='name'></input>
+        <br><br>
+        <button>Cancel</button>
+        <button id='Submit'>OK</button>`
+    </div>
+    <div id="main">
+        <h3>Conversation Board</h3>
+        <br>
+        <textarea rows="40" style="width:100%;"></textarea>
+        <br><br>
+        <input name='msg' style="width:100%;"></input>
+        <br><br>
+        <button id='send'>Send</button>`
+    </div>
+</body>
+</html>
