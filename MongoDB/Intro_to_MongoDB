@@ -1,0 +1,49 @@
+C:\Program Files\MongoDB\Server\3.6\bin - location
+mongod.exe - start Mongo
+mongo.exe 
+
+--------------------------------
+-    Basic MongoDB Concepts    -
+--------------------------------
+
+show dbs
+db.dropDatabase()
+
+show collections
+db.createCollection("COLLECTION_NAME")
+db.COLLECTION_NAME.insert({YOUR_JSON_DOCUMENT})
+db.COLLECTION_NAME.drop()
+
+
+--------------------------------
+- Assignment: Intro to MongoDB -
+--------------------------------
+1. use my_first_db 			- create db
+2. db.createCollection('students')	- Create students collection.
+3, 4
+> db.students.insert({name:"Anton", home_state:"MD", lucky_number:13, birthday:{month:06, year: 1981}})
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({name:"John Smith", home_state:"CA", lucky_number:15, birthday:{month:02, year: 1999}})
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({name:"Aon Ak", home_state:"PA", lucky_number:77, birthday:{month:01, year: 1994}})
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({name:"Tom White", home_state:"PA", lucky_number:7, birthday:{month:05, year: 2001}})
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({name:"John Seal", home_state:"NY", lucky_number:55, birthday:{month:01, year: 1985}})
+WriteResult({ "nInserted" : 1 })
+5. db.students.find().pretty()
+6. db.students.find({home_state: "CA"})
+7. db.students.find({lucky_number:{$gt:3}}).pretty()
+   db.students.find({lucky_number:{$lte:10}}).pretty()
+   db.students.find({lucky_number:{$gt:1, $lt:9}}).pretty()
+8. db.students.update({}, {$set: { interests : [] }}, {multi:true})
+9. db.students.update({name: 'Anton'}, {$push: {interests: 'coints'}})
+10.db.students.update({name: 'Aon Ak"'}, {$push: {interests: 'taxes'}})
+11.db.students.update({name: 'Aon Ak'}, {$pop: {interests : 1}})
+12.db.students.remove({home_state :'CA'})
+13.db.students.remove({name :'Aon Ak'})
+14.db.students.remove({lucky_number : {$gt:5} }, true)
+15.db.students.update({}, {$set : {belts : 0}}, {multi:true})
+16.db.students.update({home_state : 'Oregon'}, {$set: {belts : +1}}, {multi:true})
+17.db.students.update({},{$unset :{lucky_number: ''}}, {multi:true})
+18.db.students.update({}, { $currentDate : {updated_on : true}}, {multi:true})

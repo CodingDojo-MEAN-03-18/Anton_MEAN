@@ -14,13 +14,11 @@ app.get('/', function(req, res) {
     res.render("index");
 })
 
-
 var server = app.listen(5000, function() {
  console.log("listening on port 5000");
 });
+
 var io = require('socket.io').listen(server);
-
-
 
 io.sockets.on('connection', function (socket) {
     console.log("Client/socket is connected!");
@@ -28,6 +26,7 @@ io.sockets.on('connection', function (socket) {
 
     socket.on('msg', function (data){
         socket.broadcast.emit('bd_msg',data);
+        console.log(data);
     });
 
 })
