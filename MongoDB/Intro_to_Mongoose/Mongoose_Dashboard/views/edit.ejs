@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Mongoose Edit</title>
+</head>
+<body>
+    <div id="main">
+        <form action="/edit" method="post">
+            Select Group:
+            <select name="group">
+                <option value="Unknow">Unknow</option>
+                <option value="Fish">Fish</option>
+                <option value="Amphibians">Amphibians</option>
+                <option value="Reptiles">Reptiles</option>
+                <option value="Birds">Birds</option>
+                <option value="Mammals">Mammals</option>
+            </selec>
+            <br>
+            Name:
+            <input type="text" name="name">
+            <br>
+            Description:
+            <textarea name="description"  cols="30" rows="10"></textarea>
+            <br><br>
+            Age:
+            <input type="text" name="age">
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>

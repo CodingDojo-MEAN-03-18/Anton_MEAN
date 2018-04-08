@@ -12,41 +12,65 @@ app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 
-mongoose.connect('mongodb://localhost/quoting_dojo');
+mongoose.connect('mongodb://localhost/animals');
 mongoose.connection.on('connected', () => console.log('connected to MongoDB'));
 
-const QuoteSchema = new Schema({
-    name : {
+const AnimalsSchema = new Schema({
+    group:{
+        type: String,
+        required: true
+    },name: {
         type: String,
         required: [true, 'the name is required']
-        },
-        quote: {
-            type: 'string',
-            required: [true, 'the quote is required']
-        }
-    }, { timestamps :true })
+    },
+    lifespan: {
+        type: Number,
+    },
+    description:{
+        type: String,
+    }}, { timestamps :true })
 
-const Quote = mongoose.model('Quote', QuoteSchema );
+const Animals = mongoose.model('Animals', AnimalsSchema );
 
-app.get('/', (req, res) => res.render("index"));
-
-app.get('/quotes', (req, res) => {
-    Quote.find({}, (errors, quotes) => {
+app.get('/', (req, res) => {
+    Animals.find({}, (errors, result) => {
         if(errors) console.log("Something going wrong!");
-        else res.render("quotes", {data: quotes});
+        else res.render("index", {data: result});
     });
 });
 
-app.post('/quotes', (req,res) =>{
-    let data = new Quote({name: req.body.name , quote: req.body.quote });
+app.post('/add', (req,res) =>{
+    let data = new Animals({group:req.body.group, name: req.body.name, 
+                        lifespan:req.body.age,  description: req.body.description});
     data.save()
         .then(data =>{
             console.log(data + " - saved!");
-            res.redirect('/quotes');    
+            res.redirect('/');    
         })
         .catch(error =>{
             console.log("!error: " + Object.keys(error.errors));
         });
+});
+
+app.get('/delete/:id', (req, res) => {
+    Animals.remove({_id:req.params.id}, error =>{
+        if(error) console.log("!error: " + error);
+        else res.redirect('/');
+    });
+});
+
+app.get('/info/:id', (req, res) => {
+    Animals.find({_id:req.params.id}, (error, result) =>{
+        if(error) console.log("!error: " + error);
+        else res.render("info", {data: result});
+    });
+});
+
+app.get('/edit/:id', (req, res) => {
+    Animals.find({_id:req.params.id}, (error, result)=>{
+        if(error) console.log("!error: " + error);
+        else res.render("edit", {data: result});
+    });
 });
 
 app.listen(port, () =>  console.log(`listening on ${port}`));

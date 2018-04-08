@@ -5,16 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
-    <title>Quoting Dojo</title>
+    <title>Document</title>
 </head>
 <body>
     <div id="main">
-       <h1>Here are the awesome quotes!</h1>
-       <% for (var quote of data) {%>
-            <p>"<%= quote.quote%>"</p>
-            <p><%= quote.name %> at: <%=quote.createdAt%> </p>
-            <hr>
-       <% } %>
+        <h1><%= data.name %></h1>
+        <h2><%= data.group %></h2>
+        <h3>Lifespan: <%= data.lifespan %></h3>
+        <p><%= data.description %></p>
+        <a href="/">Home</a>
     </div>
 </body>
 </html>

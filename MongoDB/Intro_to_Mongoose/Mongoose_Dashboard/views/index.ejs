@@ -5,21 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
-    <title>Quoting Dojo</title>
+    <title>Mongoose Dashboard</title>
 </head>
 <body>
     <div id="main">
-        <h1>Welcome to Quoting Dojo</h1>
-        <form action="/quotes" method="post">
-        Your name
+        <form action="/add" method="post">
+        Select Group:
+        <select name="group">
+            <option value="Unknow">Unknow</option>
+            <option value="Fish">Fish</option>
+            <option value="Amphibians">Amphibians</option>
+            <option value="Reptiles">Reptiles</option>
+            <option value="Birds">Birds</option>
+            <option value="Mammals">Mammals</option>
+        </selec>
+        <br>
+        Name:
         <input type="text" name="name">
+        <br>
+        Description:
+        <textarea name="description"  cols="30" rows="10"></textarea>
         <br><br>
-        Your quote:
-        <textarea name="quote"  cols="30" rows="10"></textarea>
-        <br><br>
-        <input type="submit" value="Add my quote">
-        <input type="button" value="Skip to quotes" onclick="window.location.href='/quotes'">
+        Age:
+        <input type="text" name="age">
+        <br>
+        <input type="submit" value="Submit">
         </form>
+        <table style="width:100%">
+            <tr>
+              <th>Group</th>
+              <th>Name</th> 
+              <th>Lifespan</th>
+              <th>Description</th>
+              <th>Added</th>
+              <th>Updated</th>
+              <th>Action</th>
+            </tr>
+            <% for (var key of data) {%>
+                <tr>
+                    <td><%= key.group %></td>
+                    <td><a href="/info/<%=key._id%>"><%= key.name %></a></td>
+                    <td><%= key.lifespan %></td>
+                    <td><%= key.description %></td>
+                    <td><%= key.createdAt %></td>
+                    <td><%= key.updatedAt %></td>
+                    <td><a href="/delete/<%=key._id%>">Delete</a> | <a href="/edit/<%=key._id%>">Edit</a></td>  
+                </tr> 
+            <% } %>
+          </table>
     </div>
 </body>
 </html>
