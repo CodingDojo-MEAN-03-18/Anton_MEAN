@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="main">
-        <form action="/edit" method="post">
+        <form action="/<%= data.id %>" method="post">
             Select Group:
             <select name="group">
                 <option value="Unknow">Unknow</option>
@@ -26,7 +26,7 @@
             Description:
             <textarea name="description"  cols="30" rows="10"></textarea>
             <br><br>
-            Age:
+            Lifespan:
             <input type="text" name="age">
             <br>
             <input type="submit" value="Submit">

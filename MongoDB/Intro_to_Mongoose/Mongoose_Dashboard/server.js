@@ -2,8 +2,9 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const bodyParser = require("body-parser");
-const port = 5000;
+const port = process.env.PORT || 5000;
 const mongoose = require('mongoose');
+
 const { Schema } = mongoose;
 
 
@@ -34,7 +35,7 @@ const Animals = mongoose.model('Animals', AnimalsSchema );
 
 app.get('/', (req, res) => {
     Animals.find({}, (errors, result) => {
-        if(errors) console.log("Something going wrong!");
+        if(errors) console.log("Something is going wrong!");
         else res.render("index", {data: result});
     });
 });
@@ -52,25 +53,36 @@ app.post('/add', (req,res) =>{
         });
 });
 
-app.get('/delete/:id', (req, res) => {
-    Animals.remove({_id:req.params.id}, error =>{
+app.get('/delete/:id/', (req, res) => {
+    Animals.remove({_id: req.params.id}, error =>{
         if(error) console.log("!error: " + error);
         else res.redirect('/');
     });
 });
 
-app.get('/info/:id', (req, res) => {
-    Animals.find({_id:req.params.id}, (error, result) =>{
+app.get('/info/:id/', (req, res) => {
+    console.log(req.params.id);
+    Animals.find({_id: req.params.id}, (error, result) =>{
         if(error) console.log("!error: " + error);
-        else res.render("info", {data: result});
+        else res.render("info", {data: result[0]});
     });
 });
 
-app.get('/edit/:id', (req, res) => {
-    Animals.find({_id:req.params.id}, (error, result)=>{
+app.get('/edit/:id/', (req, res) => {
+    Animals.find({_id: req.params.id}, (error, result)=>{
         if(error) console.log("!error: " + error);
-        else res.render("edit", {data: result});
+        else res.render("edit", {data: result[0]});
     });
+});
+
+app.post('/:id', (req,res) =>{
+
+    Animals.update({_id: req.params.id}, {group:req.body.group, name: req.body.name, 
+                        lifespan:req.body.age,  description: req.body.description}, 
+                        error =>{
+                            if(error) console.log("!error: " + error);
+                            else res.redirect('/');
+                        });
 });
 
 app.listen(port, () =>  console.log(`listening on ${port}`));
