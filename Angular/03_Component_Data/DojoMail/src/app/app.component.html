@@ -1,0 +1,22 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<h1>{{title}}</h1>
+<table>
+  <tr>
+    <th>Email</th>
+    <th>Importance</th>
+    <th>Subject</th>
+    <th>Content</th>
+  </tr>
+  <tr *ngFor='let key of myList.data'>
+    <td>{{key.email}}</td>
+    <td>{{key.level}}</td>
+    <td>{{key.subj}}</td>
+    <td>{{key.content}}</td>
+  </tr>
+</table>
+
+
+
+
+
+
