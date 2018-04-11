@@ -1,0 +1,10 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div id="main">
+  <h1> {{ title }}</h1>
+  <div class='container' *ngFor="let i of [0,1,2,3,4,5,6,7]">
+    <button (click)="onClick(i)" [ngClass]="{'red':'OFF' == b_names[i], 'green':'ON' == b_names[i]}" >{{b_names[i]}}</button>
+  </div>
+</div>
+
+
+

@@ -1,0 +1,10 @@
+<div id="main">
+  <h1>{{ title }}</h1>
+  <button [ngClass]="{selected: selectedbutton == 1}" (click)="onButtonClick(1)">PST</button>
+  <button [ngClass]="{selected: selectedbutton == 2}" (click)="onButtonClick(2)">MST</button>
+  <button [ngClass]="{selected: selectedbutton == 3}" (click)="onButtonClick(3)">CST</button>
+  <button [ngClass]="{selected: selectedbutton == 4}" (click)="onButtonClick(4)">EST</button>
+  <button (click)="onButtonClick(5)">Clear</button>
+  <br>
+  <h2>{{ time | date:'medium'}}</h2>
+</div>
