@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 
-app.use(express.static(path.join(__dirname, "./static")));
+app.use(express.static(__dirname, "./static"));
 app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
@@ -53,7 +53,7 @@ app.post('/add', (req,res) =>{
         });
 });
 
-app.get('/delete/:id/', (req, res) => {
+app.get('/delete/:id', (req, res) => {
     Animals.remove({_id: req.params.id}, error =>{
         if(error) console.log("!error: " + error);
         else res.redirect('/');

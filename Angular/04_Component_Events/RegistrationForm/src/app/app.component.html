@@ -1,0 +1,68 @@
+<h1>{{ title }}</h1>
+<p>{{ message }}</p>
+<p>{{ message2 }}</p>
+
+<form (submit)='onSubmit($event, myForm)' #myForm='ngForm'>
+  <h2>Account Information</h2>
+  *First Name:
+  <br>
+  <input type="text" name="first_name" required minlength="4" maxlength="24" [(ngModel)]="user.first_name" #first_name="ngModel">
+  <div class="red" *ngIf="first_name.errors && first_name.dirty">*Required! Min length is 4, max length is 24</div>
+  <br>
+  *Last Name:
+  <br>
+  <input type="text" name="last_name" required minlength="2" maxlength="45" [(ngModel)]="user.last_name" #last_name="ngModel">
+  <div class="red" *ngIf="last_name.errors && first_name.dirty">*Required! Min length is 2, max length is 45</div>
+  <br>
+  *Email:
+  <br>
+  <input type="text" name="email" required minlength="4" maxlength="24" [(ngModel)]="user.email" #email="ngModel">
+  <div class="red" *ngIf="email.errors && first_name.dirty">*Required! </div>
+  <br>
+  *Password:
+  <br>
+  <input type="text" name="password" required minlength="6" [(ngModel)]="user.password" #pass="ngModel">
+  <div class="red" *ngIf="pass.errors && first_name.dirty">*Required! Min length is 6</div>
+  <br>
+  *Password Confirmation:
+  <br>
+  <input type="text" name="confirm_password" required minlength="6"  [(ngModel)]="user.confirm" #c_pass="ngModel">
+  <div class="red" *ngIf="c_pass.errors && first_name.dirty">*Required! Min length is 6</div>
+  <div class="red" *ngIf="c_pass.value !== pass.value && first_name.dirty">The pass should match!</div>
+  <br>
+  *Street Address:
+  <br>
+  <input type="text" name="address" required minlength="4" maxlength="24" [(ngModel)]="user.address" #address="ngModel">
+  <div class="red" *ngIf="address.errors && first_name.dirty">*Required! Min length is 4, max length is 24</div>
+  <br>
+  Unit/Apt #
+  <br>
+  <input type="text" name="apt" [(ngModel)]="user.unit">
+  <br>
+  *City
+  <br>
+  <input type="text" name="city" required minlength="4" maxlength="24" [(ngModel)]="user.city" #city="ngModel">
+  <div class="red" *ngIf="city.errors && first_name.dirty">*Required! Min length is 4, max length is 24</div>
+  <br>
+  *State
+  <br>
+  <select name="state" required [(ngModel)]="user.state" #state="ngModel">
+    <option value="Alabama">Alabama</option>
+    <option value="Alaska">Alaska</option>
+    <option value="Arizona">Arizona</option>
+    <option value="Arkansas">Arkansas</option>
+    <option value="California">California</option>
+    <option value="Colorado">Colorado</option>
+    <option value="Connecticut">Connecticut</option>
+    <option value="Delaware">Delaware</option>
+  </select>
+  <div class="red" *ngIf="state.errors && first_name.dirty">*Required! </div>
+  <br>
+  *I'm feeling lucky:
+  <input type="radio" required name="luck" value="Yes" [(ngModel)]="user.lucky" #radio="ngModel">Yes
+  <input type="radio" required name="luck" value="No" [(ngModel)]="user.lucky" #radio="ngModel">No
+  <div class="red" *ngIf="radio.errors && first_name.dirty">*Required!</div>
+  <br><br>
+  <button [disabled]="!myForm.valid">Register</button>
+</form>
+
