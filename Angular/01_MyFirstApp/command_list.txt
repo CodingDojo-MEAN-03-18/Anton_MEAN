@@ -2,3 +2,14 @@ npm install -g @angular/cli
 ng new first-angular-app
 cd first-angular-app
 ng serve
+
+# Architecture 
+ng new my-app
+cd my-app
+ng generate component task
+cd src
+cd app
+cd task
+ng generate component task-list
+ng generate component task-new
+ng generate service task
