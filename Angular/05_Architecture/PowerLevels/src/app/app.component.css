@@ -1,0 +1,20 @@
+fieldset{
+  width: 100%;
+  margin: 10px auto;
+  padding: 5px;
+}
+
+fieldset form *{
+  display: inline;
+}
+#top, #bottom{
+  width: 100%;
+}
+
+.blocks{
+  width: 250px;
+  vertical-align: top;
+  display: inline-block;
+  margin: 10px auto;
+}
+

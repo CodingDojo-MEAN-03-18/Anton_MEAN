@@ -1,0 +1,7 @@
+<fieldset>
+    <legend>Super Saiyan Four Component</legend>
+    <h3>Power Level:</h3> {{amount}}
+    <h3 *ngIf='(amount > 9000 && amount < 20000)'>Over 9000!</h3>
+    <h3 *ngIf='(amount > 20000 && amount != 50000)'>Superlative!</h3>
+    <h3 *ngIf='(amount == 50000)'>The one</h3>
+</fieldset>
