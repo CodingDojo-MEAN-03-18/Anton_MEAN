@@ -1,0 +1,10 @@
+<form (submit)="onSubmit($event, form)" #form='ngForm'>
+  <h1>Add a Quote</h1>
+  <textarea name="quote" cols="50" rows="10" required minlength="4" [(ngModel)]="quote.text"></textarea>
+  <br>
+  <label for="author">Author</label>
+  <input type="text" name="author" required minlength="4" [(ngModel)]="quote.author">
+  <br>
+  <br>
+  <button [disabled] ='!form.valid'>Add Quete</button>
+</form>

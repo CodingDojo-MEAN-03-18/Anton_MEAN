@@ -1,0 +1,9 @@
+<h1>Quotes List</h1>
+<div *ngFor='let key of quotes' class="border border-primary">
+  <p>{{ key.text }}</p>
+  <p>{{ key.author }}</p>
+  <h3>{{ key.votes }}</h3>
+  <input type="button" value="Vote Up" (click)="voteUp(key)" class="btn btn-success">
+  <input type="button" value="Vote Down" (click)="voteDown(key)" class="btn btn-danger">
+  <input type="button" value="Delete" (click)="delete(key)" class="btn btn-dark">
+</div>

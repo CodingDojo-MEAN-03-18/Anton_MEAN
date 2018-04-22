@@ -6,7 +6,7 @@ ng serve
 # Architecture 
 ng new my-app
 cd my-app
-ng generate component task
+ng generate component task   / ng g c task
 cd src
 cd app
 cd task
