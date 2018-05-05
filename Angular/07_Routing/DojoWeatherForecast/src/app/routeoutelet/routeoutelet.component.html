@@ -1,0 +1,11 @@
+<div>
+  <h1>{{ dataService.location }}</h1>
+  <ul>
+    <li>Humidity: {{ dataService.humidity }}</li>
+    <li>Temperature (Average):{{ dataService.temp_average }}</li>
+    <li>Temperature (High):{{ dataService.temp_hight }}</li>
+    <li>Temperature (Low):{{ dataService.temp_low }}</li>
+    <li>Status: {{ dataService.status }}</li>
+  </ul>
+  <img src="assets/images/{{dataService.location}}.jpg" width="256" height="256">
+</div>

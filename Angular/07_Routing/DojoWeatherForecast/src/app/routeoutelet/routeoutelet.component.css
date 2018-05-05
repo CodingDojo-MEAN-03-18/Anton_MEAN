@@ -1,0 +1,14 @@
+div {
+  border: 2px black;
+}
+
+ul{
+  display: inline-block;
+  margin: 15px;
+  list-style-type: none;
+}
+
+img{
+  display: inline-block;
+  margin: 15px;
+}

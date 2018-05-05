@@ -1,0 +1,24 @@
+<div id="list">
+  <table>
+    <tr>
+      <th>Task:</th>
+      <th>Description</th>
+      <th>Completed?</th>
+      <th>Created</th>
+    <tr>
+    <tr *ngFor="let task of tasks">
+      <td>{{ task.title }}</td>
+      <td>{{ task.description }}</td>
+      <td>{{ task.completed }}</td>
+      <td>{{ task.createdAt }}</td>
+    </tr>
+  </table>
+</div>
+<br>
+<div id="Add">
+  <form (submit) = "onSubmit()" #formData="ngForm">
+    <input type="text" [(ngModel)]="newTask.title" name="title" required minlength="5">
+    <input type="text" [(ngModel)]="newTask.description" name="description">
+    <button [disabled]="!formData.valid">Add</button>
+  </form>
+</div>

@@ -1,0 +1,12 @@
+Now, lets use the terminal to navigate to our Express root directory, 
+and run 'nodemon server.js' to start our express server.
+
+Let's open a secondary terminal window and navigate to our Angular's root directory 
+(within our Express project folder), and run the 'ng build --watch' command. As mentioned above, 
+this will build our 'dist' folder as well as run a mini server to keep watch over our Angular 
+files incase of changes.
+
+Our MEAN application is nearly complete. Remember, every time we want to launch a MEAN project, 
+we need to run both the Express server (by navigating our terminal to our Express root directory 
+and running 'nodemon server.js'), as well as the Angular server (by navigating a second terminal 
+window to our Angular root directory and running 'ng build --watch').
