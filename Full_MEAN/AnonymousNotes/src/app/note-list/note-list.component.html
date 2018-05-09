@@ -1,0 +1,6 @@
+<div id="main">
+  <div *ngFor='let note of notes | reverse'>
+    <h3>Noted: {{ note.createdAt | date: 'medium' }}</h3>
+    <p>{{ note.note}}</p>
+  </div>
+</div>
